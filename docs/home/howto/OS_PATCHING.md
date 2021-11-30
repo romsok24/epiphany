@@ -29,7 +29,7 @@ This document will help you decide how you should patch your OS. This is not a s
 For Epiphany >= v1.2 we recommend the following image (AMI):
 
 - RHEL: `RHEL-7.9_HVM-20210208-x86_64-0-Hourly2-GP2` (kernel 3.10.0-1160.15.2.el7.x86_64),
-- Ubuntu: `ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-20210907` (kernel 5.4.0-1056-aws).
+- Ubuntu: `ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20211129` (kernel 5.11.0-1022-aws).
 
 Note: For different supported OS versions this guide may be useful as well.
 
@@ -57,7 +57,7 @@ For more information, refer to [AWS Systems Manager User Guide](https://docs.aws
 For Epiphany >= v1.2 we recommend the following image (urn):
 
 - RHEL: `RedHat:RHEL:7-LVM:7.9.2021051701` (kernel 3.10.0-1160.el7.x86_64),
-- Ubuntu: `Canonical:UbuntuServer:18.04-LTS:18.04.202109130` (kernel 5.4.0-1058-azure).
+- Ubuntu: `Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:20.04.202111210` (kernel 5.11.0-1021-azure).
 
 Note: For different supported OS versions this guide may be useful as well.
 
