@@ -1,41 +1,22 @@
 import os
 import shutil
-from distutils import dir_util
-from os import listdir
-from os.path import isfile, join
+
 from pathlib import Path
 
 from ansible.inventory.manager import InventoryManager
 from ansible.parsing.dataloader import DataLoader
 
 from cli.src.Config import Config
-from cli.src.helpers.data_loader import (load_template_file, load_yamls_file,
-                                         types)
-from cli.src.helpers.yaml_helpers import dump, dump_all
+from cli.src.helpers.data_loader import load_template_file, template_types
+from cli.src.helpers.yaml_helpers import dump
 
 TERRAFORM_OUTPUT_DIR = 'terraform/'
-MANIFEST_FILE_NAME = 'manifest.yml'
 SP_FILE_NAME = 'sp.yml'
 ANSIBLE_INVENTORY_FILE = 'inventory'
 ANSIBLE_CFG_FILE = 'ansible.cfg'
 ANSIBLE_OUTPUT_DIR = 'ansible/'
 ANSIBLE_VAULT_OUTPUT_DIR = 'vault/'
 SPEC_OUTPUT_DIR = 'spec_tests/'
-
-
-def save_manifest(docs, cluster_name, manifest_name=MANIFEST_FILE_NAME):
-    build_dir = get_build_path(cluster_name)
-    path = os.path.join(build_dir, manifest_name)
-    with open(path, 'w') as stream:
-        dump_all(docs, stream)
-    return path
-
-
-def load_manifest(build_dir):
-    path_to_manifest = os.path.join(build_dir, MANIFEST_FILE_NAME)
-    if not os.path.isfile(path_to_manifest):
-        raise Exception('No manifest.yml inside the build folder')
-    return load_yamls_file(path_to_manifest)
 
 
 def save_sp(service_principle, cluster_name):
@@ -50,7 +31,7 @@ def save_inventory(inventory, cluster_model, build_dir=None):
     if build_dir is None:
         cluster_name = cluster_model.specification.name
         build_dir = get_build_path(cluster_name)
-    template = load_template_file(types.ANSIBLE, '', ANSIBLE_INVENTORY_FILE)
+    template = load_template_file(template_types.ANSIBLE, '', ANSIBLE_INVENTORY_FILE)
     content = template.render(inventory=inventory, cluster_model=cluster_model)
     file_path = os.path.join(build_dir, ANSIBLE_INVENTORY_FILE)
     save_to_file(file_path, content)
@@ -61,7 +42,7 @@ def load_inventory(inventory_path):
 
 
 def save_ansible_config_file(ansible_config_file_settings, ansible_config_file_path):
-    template = load_template_file(types.ANSIBLE, '', ANSIBLE_CFG_FILE)
+    template = load_template_file(template_types.ANSIBLE, '', ANSIBLE_CFG_FILE)
     content = template.render(ansible_config_file_settings=ansible_config_file_settings)
     save_to_file(ansible_config_file_path, content)
 
@@ -92,10 +73,6 @@ def get_build_path(cluster_name):
 
 def get_inventory_path(cluster_name):
     return os.path.join(get_build_path(cluster_name), ANSIBLE_INVENTORY_FILE)
-
-
-def get_manifest_path(cluster_name):
-    return os.path.join(get_build_path(cluster_name), MANIFEST_FILE_NAME)
 
 
 def get_inventory_path_for_build(build_directory):
@@ -148,7 +125,7 @@ def delete_directory(dir_path):
 
 
 def copy_files_recursively(src, dst):
-    dir_util.copy_tree(src, dst)
+    shutil.copytree(src, dst, dirs_exist_ok=True)
 
 
 def copy_file(src, dst):

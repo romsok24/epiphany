@@ -1,3 +1,4 @@
+---
 kind: epiphany-cluster
 title: "Epiphany cluster Config"
 provider: azure
@@ -31,4 +32,6 @@ specification:
     load_balancer:
       count: 1
     rabbitmq:
+      count: 1
+    opensearch:
       count: 1

@@ -2,123 +2,69 @@
 
 Enable for Ubuntu (default):
 
-1. Enable "repository" component:
+1. Enable `repository` component:
 
-   ```yaml
-   repository:
-     count: 1
-   ```
+    ```yaml
+    specification:
+    ...
+      components:
+        repository:
+          count: 1
+    ```
 
-Enable for RHEL on Azure:
+Enable for AlmaLinux on AWS/Azure:
 
-1. Enable "repository" component:
+1. Enable `repository` component and specify `default_os_image`:
 
-   ```yaml
-   repository:
-     count: 1
-     machine: repository-machine-rhel
-   ```
+    ```yaml
+    specification:
+    ...
+      cloud:
+        default_os_image: almalinux-8-x86_64
+        ...
+      components:
+        repository:
+          count: 1
+    ```
 
-2. Add repository VM definition to main config file:
+Enable for RHEL on AWS/Azure:
 
-   ```yaml
-   kind: infrastructure/virtual-machine
-   name: repository-machine-rhel
-   provider: azure
-   based_on: repository-machine
-   specification:
-     storage_image_reference:
-       publisher: RedHat
-       offer: RHEL
-       sku: 7lvm-gen2
-       version: "7.9.2021121604"
-   ```
+1. Enable `repository` component and specify `default_os_image`:
 
-Enable for RHEL on AWS:
-
-1. Enable "repository" component:
-
-   ```yaml
-   repository:
-     count: 1
-     machine: repository-machine-rhel
-   ```
-
-2. Add repository VM definition to main config file:
-
-   ```yaml
-   kind: infrastructure/virtual-machine
-   title: Virtual Machine Infra
-   name: repository-machine-rhel
-   provider: aws
-   based_on: repository-machine
-   specification:
-     os_full_name: RHEL-7.9_HVM-20211005-x86_64-0-Hourly2-GP2
-   ```
-
-Enable for CentOS on Azure:
-
-1. Enable "repository" component:
-
-   ```yaml
-   repository:
-     count: 1
-     machine: repository-machine-centos
-   ```
-
-2. Add repository VM definition to main config file:
-
-   ```yaml
-   kind: infrastructure/virtual-machine
-   name: repository-machine-centos
-   provider: azure
-   based_on: repository-machine
-   specification:
-     storage_image_reference:
-       publisher: OpenLogic
-       offer: CentOS
-       sku: "7_9-gen2"
-       version: "7.9.2021071901"
-   ```
-
-Enable for CentOS on AWS:
-
-1. Enable "repository" component:
-
-   ```yaml
-   repository:
-     count: 1
-     machine: repository-machine-centos
-   ```
-
-2. Add repository VM definition to main config file:
-
-   ```yaml
-   kind: infrastructure/virtual-machine
-   title: Virtual Machine Infra
-   name: repository-machine-centos
-   provider: aws
-   based_on: repository-machine
-   specification:
-     os_full_name: "CentOS 7.9.2009 x86_64"
-   ```
+    ```yaml
+    specification:
+    ...
+      cloud:
+        default_os_image: rhel-8-x86_64
+        ...
+      components:
+        repository:
+          count: 1
+    ```
 
 Disable:
 
-1. Disable "repository" component:
+1. Disable `repository` component:
 
-   ```yaml
-   repository:
-     count: 0
-   ```
+    ```yaml
+    specification:
+    ...
+      components:
+        repository:
+          count: 0
+    ```
 
-2. Prepend "kubernetes\_master" mapping (or any other mapping if you don't deploy Kubernetes) with:
+2. Prepend `kubernetes_master` mapping (or any other mapping if you don't deploy Kubernetes) with:
 
-   ```yaml
-   kubernetes_master:
-     - repository
-     - image-registry
-   ```
+    ```yaml
+    kind: configuration/feature-mappings
+    specification:
+      mappings:
+      ...
+        kubernetes_master:
+          - repository
+          - image-registry
+    ```
 
 ## How to create an Epiphany cluster on existing infrastructure
 
@@ -132,8 +78,8 @@ Epicli has the ability to set up a cluster on infrastructure provided by you. Th
 At least one of them (with `repository` role) has Internet access in order to download dependencies.
 If there is no Internet access, you can use [air gap feature (offline mode)](#how-to-create-an-epiphany-cluster-on-existing-air-gapped-infrastructure).
 2. The cluster machines/VMs are running one of the following Linux distributions:
-    - RedHat 7.6+ and < 8
-    - CentOS 7.6+ and < 8
+    - AlmaLinux 8.4+
+    - RedHat 8.4+
     - Ubuntu 20.04
 3. The cluster machines/VMs are accessible through SSH with a set of SSH keys you provide and configure on each machine yourself (key-based authentication).
 4. The user used for SSH connection (`admin_user`) has passwordless root privileges through `sudo`.
@@ -231,7 +177,7 @@ To set up the cluster do the following steps:
     ```
 
     Where:
-    - OS should be `redhat-7`, `ubuntu-20.04`
+    - OS should be `almalinux-8`, `rhel-8`, `ubuntu-20.04`
     - ARCH should be `x86_64`, `arm64`
 
     This will create a directory called `prepare_scripts` with the needed files inside.
@@ -243,7 +189,7 @@ To set up the cluster do the following steps:
     ```
 
     Where:
-    - OS should be `redhat-7`, `ubuntu-20.04`, `detect`
+    - OS should be `almalinux-8`, `rhel-8`, `ubuntu-20.04`, `detect`
     - /requirementsoutput/ where to output downloaded requirements
 
     This will run the download-requirements script for target OS type and save requirements under /requirementsoutput/. Once run successfully the `/requirementsoutput/` needs to be copied to the provisioning machine to be used later on.
@@ -343,12 +289,12 @@ specification:
     kubernetes_node:
       count: 2
 ---
-kind: configuration/feature-mapping
-title: "Feature mapping to roles"
+kind: configuration/feature-mappings
+title: "Feature mapping to components"
 provider: <provider>
 name: default
 specification:
-  roles_mapping:
+  mappings:
     kubernetes_master:
       - repository
       - image-registry
@@ -368,7 +314,7 @@ specification:
   custom_repository_url: "http://<ip-address>:8080/epirepo"
 ```
 
-1. Disable "repository" component:
+1. Disable `repository` component:
 
    ```yaml
    repository:
@@ -437,7 +383,7 @@ To set up the cluster do the following steps from the provisioning machine:
     For `AWS` the admin name is already specified and is dependent on the Linux distro image you are using for the VM's:
 
     - Username for Ubuntu Server: `ubuntu`
-    - Username for Redhat: `ec2-user`
+    - Username for AlmaLinux/RHEL: `ec2-user`
 
 3. Set up the cloud specific data:
 
@@ -449,13 +395,13 @@ To set up the cluster do the following steps from the provisioning machine:
     cloud:
       region: eu-west-2
       credentials:
-        key: aws_key
-        secret: aws_secret
+        access_key_id: aws_key
+        secret_access_key: aws_secret
       use_public_ips: false
       default_os_image: default
     ```
 
-    The [region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) lets you chose the optimal place to deploy your cluster. The `key` and `secret` are needed by Terraform and can be generated in the AWS console. More information about that [here](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)
+    The [region](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) lets you chose the optimal place to deploy your cluster. The `access_key_id` and `secret_access_key` are needed by Terraform and can be generated in the AWS console. More information about that [here](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)
 
     Azure:
 
@@ -497,9 +443,9 @@ To set up the cluster do the following steps from the provisioning machine:
                   The following values are accepted:
                   - `default`: Applies user defined `infrastructure/virtual-machine` documents when generating a new configuration.
                   - `ubuntu-20.04-x86_64`: Applies the latest validated and tested Ubuntu 20.04 image to all `infrastructure/virtual-machine` documents on `x86_64` on Azure and AWS.
-                  - `redhat-7-x86_64`: Applies the latest validated and tested RedHat 7.x image to all `infrastructure/virtual-machine` documents on `x86_64` on Azure and AWS.
-                  - `centos-7-x86_64`: Applies the latest validated and tested CentOS 7.x image to all `infrastructure/virtual-machine` documents on `x86_64` on Azure and AWS.
-                  - `centos-7-arm64`: Applies the latest validated and tested CentOS 7.x image to all `infrastructure/virtual-machine` documents on `arm64` on AWS. Azure currently doesn't support `arm64`.
+                  - `rhel-8-x86_64`: Applies the latest validated and tested RedHat 8.x image to all `infrastructure/virtual-machine` documents on `x86_64` on Azure and AWS.
+                  - `almalinux-8-x86_64`: Applies the latest validated and tested AlmaLinux 8.x image to all `infrastructure/virtual-machine` documents on `x86_64` on Azure and AWS.
+                  - `almalinux-8-arm64`: Applies the latest validated and tested AlmaLinux 8.x image to all `infrastructure/virtual-machine` documents on `arm64` on AWS. Azure currently doesn't support `arm64`.
                   The images which will be used for these values will be updated and tested on regular basis.
 
 4. Define the components you want to install:
@@ -532,44 +478,18 @@ To set up the cluster do the following steps from the provisioning machine:
 
 ### Note for RHEL Azure images
 
-Epiphany currently supports RHEL 7 LVM partitioned images attached to standard RHEL repositories. For more details, refer to [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/redhat/redhat-images#rhel-7-image-types).
+Epiphany currently supports RHEL 8 RAW-partitioned images (`rhel-raw` [offer](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/redhat.rhel-raw))
+attached to standard RHEL repositories. For more details, refer to [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/redhat/redhat-images).
 
-Epiphany uses cloud-init custom data in order to merge small logical volumes (`homelv`, `optlv`, `tmplv` and `varlv`)
-into the `rootlv` and extends it (with underlying filesystem) by the current free space in its volume group.
-The `usrlv` LV, which has 10G, is not merged since it would require a reboot. The merging is required to deploy a cluster,
-however, [it can be disabled](#how-to-disable-merging-lvm-logical-volumes) for troubleshooting since it performs some administrative tasks (such as remounting filesystems or restarting services).
+In the past Epiphany supported LVM-partitioned images (`RHEL` [offer](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/redhat.rhel-20190605))
+which require merging small logical volumes in order to deploy a cluster. This feature is still present but not tested.
+It uses cloud-init custom data to merge small logical volumes (`homelv`, `optlv`, `tmplv` and `varlv`)
+into the `rootlv` which is extended (with underlying filesystem) by the current free space in its volume group.
+The `usrlv` LV, which has 10G, is not merged since it would require a reboot.
+The merging [can be disabled](#how-to-disable-merging-lvm-logical-volumes) for troubleshooting since it performs some
+administrative tasks (such as remounting filesystems or restarting services).
 
-NOTE: RHEL 7 LVM images require at least 64 GB for OS disk.
-
-Example config:
-
-```yaml
-kind: infrastructure/virtual-machine
-specification:
-  storage_image_reference:
-    publisher: RedHat
-    offer: RHEL
-    sku: "7lvm-gen2"
-    version: "7.9.2021121604"
-  storage_os_disk:
-    disk_size_gb: 64
-```
-
-### Note for CentOS Azure images
-
-Epiphany supports CentOS 7 images with RAW partitioning (recommended) and LVM as well.
-
-Example config:
-
-```yaml
-kind: infrastructure/virtual-machine
-specification:
-  storage_image_reference:
-    publisher: OpenLogic
-    offer: CentOS
-    sku: "7_9-gen2"
-    version: "7.9.2021071901"
-```
+NOTE: RHEL LVM images require at least 64 GB for OS disk.
 
 ### How to disable merging LVM logical volumes
 
@@ -593,6 +513,11 @@ Epicli has a delete command to remove a cluster from a cloud provider (AWS, Azur
   ```
 
 From the defined cluster build folder it will take the information needed to remove the resources from the cloud provider.
+
+### Note for Azure cloud provider
+
+Make sure you can safely remove OS and data disks - Epiphany does not support cluster removal from Azure
+while preserving existing disks.
 
 ## Single machine cluster
 
@@ -645,19 +570,10 @@ specification:
       count: 0
     rabbitmq:
       count: 0
-    opendistro_for_elasticsearch:
+    opensearch:
       count: 0
     single_machine:
       count: 1
----
-kind: configuration/applications
-title: "Kubernetes Applications Config"
-name: default
-specification:
-  applications:
-  - name: auth-service
-    enabled: yes # set to yest to enable authentication service
-    ... # add other authentication service configuration as needed
 ```
 
 To create a single machine cluster using the "any" provider (with extra load\_balancer config included) use the following template below:
@@ -745,40 +661,44 @@ specification:
 
 Epiphany gives you the ability to define custom components. This allows you to define a custom set of roles for a component you want to use in your cluster. It can be useful when you for example want to maximize usage of the available machines you have at your disposal.
 
-The first thing you will need to do is define it in the `configuration/feature-mapping` configuration. To get this configuration you can run `epicli init ... --full` command. In the `available_roles` roles section you can see all the available roles that Epiphany provides. The `roles_mapping` is where all the Epiphany components are defined and were you need to add your custom components.
+The first thing you will need to do is define it in the `configuration/features` and the `configuration/feature-mappings` configurations. To get these configurations you can run `epicli init ... --full` command. In the `configuration/features` doc you can see all the available features that Epiphany provides. The `configuration/feature-mappings` doc is where all the Epiphany components are defined and where you can add your custom components.
 
-Below are parts of an example `configuration/feature-mapping` were we define a new `single_machine_new` component. We want to use Kafka instead of RabbitMQ and don`t need applications and postgres since we don't want a Keycloak deployment:
+Below are parts of an example `configuration/features` and `configuration/feature-mappings` docs where we define a new `single_machine_new` component. We want to use Kafka instead of RabbitMQ and don't need applications and postgres since we don't want a Keycloak deployment:
 
 ```yaml
-kind: configuration/feature-mapping
-title: Feature mapping to roles
+kind: configuration/features
+title: "Features to be enabled/disabled"
 name: default
 specification:
-  available_roles: # All entries here represent the available roles within Epiphany
-  - name: repository
-    enabled: yes
-  - name: firewall
-    enabled: yes
-  - name: image-registry
-  ...
-  roles_mapping: # All entries here represent the default components provided with Epiphany
-  ...
+  features:  # All entries here represent the available features within Epiphany
+    - name: repository
+      enabled: yes
+    - name: firewall
+      enabled: yes
+    - name: image-registry
+    ...
+---
+kind: configuration/feature-mappings
+title: "Feature mapping to components"
+name: default
+specification:
+  mappings: # All entries here represent the default components provided with Epiphany
     single_machine:
-    - repository
-    - image-registry
-    - kubernetes-master
-    - applications
-    - rabbitmq
-    - postgresql
-    - firewall
+      - repository
+      - image-registry
+      - kubernetes-master
+      - applications
+      - rabbitmq
+      - postgresql
+      - firewall
     # Below is the new single_machine_new definition
     single_machine_new:
-    - repository
-    - image-registry
-    - kubernetes-master
-    - kafka
-    - firewall
-  ...
+      - repository
+      - image-registry
+      - kubernetes-master
+      - kafka
+      - firewall
+    ...
 ```
 
 Once defined the new `single_machine_new` can be used inside the `epiphany-cluster` configuration:
@@ -827,7 +747,7 @@ Kubernetes master | :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check
 Kubernetes node | :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: | [#1580](https://github.com/epiphany-platform/epiphany/issues/1580)
 Kafka | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | ---
 Load Balancer | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | ---
-Opendistro for elasticsearch | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | ---
+OpenSearch | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | ---
 Postgresql | :x: | :x: | :heavy_check_mark: | :heavy_check_mark: | [#1577](https://github.com/epiphany-platform/epiphany/issues/1577)
 RabbitMQ | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |  [#1578](https://github.com/epiphany-platform/epiphany/issues/1578), [#1309](https://github.com/epiphany-platform/epiphany/issues/1309)
 RabbitMQ K8s | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: | [#1486](https://github.com/epiphany-platform/epiphany/issues/1486)
@@ -1113,15 +1033,15 @@ sudo chmod +x /home/download-requirements.py # make the requirements script exec
 
 After this you should be able to run the ```download-requirements.py``` from the ```home``` folder.
 
-### RedHat 7.x
+### RedHat 8.x
 
 For RedHat you can use the following command to launch a container:
 
 ```shell
-docker run -v /shared_folder:/home <--platform linux/amd64 or --platform linux/arm64> --rm -it registry.access.redhat.com/ubi7/ubi:7.9
+docker run -v /shared_folder:/home <--platform linux/amd64 or --platform linux/arm64> --rm -it registry.access.redhat.com/ubi8/ubi:8.4
 ```
 
-As the ```registry.access.redhat.com/ubi7/ubi:7.9``` image is multi-arch you can include ```--platform linux/amd64``` or ```--platform linux/arm64``` to run the container as the specified architecture. The ```/shared_folder``` should be a folder on your local machine containing the requirement scripts.
+As the ```registry.access.redhat.com/ubi8/ubi:8.4``` image is multi-arch you can include ```--platform linux/amd64``` or ```--platform linux/arm64``` to run the container as the specified architecture. The ```/shared_folder``` should be a folder on your local machine containing the requirement scripts.
 
 For running the ```download-requirements.py``` script you will need a RedHat developer subscription to register the running container and make sure you can access to official Redhat repos for the packages needed. More information on getting this free subscription [here](https://developers.redhat.com/articles/getting-red-hat-developer-subscription-what-rhel-users-need-know).
 
@@ -1133,4 +1053,67 @@ subscription-manager attach --auto # will enable the RedHat official repositorie
 chmod +x /home/download-requirements.py # make the requirements script executable
 ```
 
-After this you should be able to run the ```download-requirements.py```  from the ```home``` folder.
+After this you should be able to run the ```download-requirements.py```  from the ```home``` folder:
+
+```shell
+/usr/libexec/platform-python /home/download-requirements.py /home/offline_requirements_rhel_8_x86_64 rhel-8
+```
+
+### AlmaLinux 8.x
+
+For AlmaLinux, you can use the following command to launch a container:
+
+```shell
+docker run -v /shared_folder:/home --rm -it almalinux:8.4
+```
+
+The ```almalinux:8.4``` image is amd64 arch only. The ```/shared_folder``` should be a folder on your local machine containing the requirement scripts.
+
+When you are inside the container run the following command to prepare for the running of the ```download-requirements.py``` script:
+
+```shell
+chmod +x /home/download-requirements.py # make the requirements script executable
+```
+
+After this you should be able to run the ```download-requirements.py```  from the ```home``` folder:
+
+```shell
+/usr/libexec/platform-python /home/download-requirements.py /home/offline_requirements_almalinux_8_4_x86_64 almalinux-8
+```
+
+### Known issues
+
+In some local environments (eg. using AlmaLinux image) the following issue could appear:
+
+```sh
+Failed to set locale, defaulting to C.UTF-8
+```
+
+To fix the issue, verify or set your locales. Example: `export LC_ALL=C.UTF-8`
+
+## How to additional custom Terraform templates
+
+For both cloud providers (AWS, Azure) Epicli generates the following terraform components for deploying a cluster:
+
+- VPC (AWS) or VNet (Azure)
+- Subnets inside the VPC or VNet
+- Security rules between the subnets
+- Virtual machines with network interfaces deployed in the different subnets
+
+Sometimes it is required to have additional resources like VPN access or other cloud native resources like EKS or AKS to this infrastructure. Epiphany gives the user the ability to add these additional resources during or after the cluster creation.
+
+The Terraform scripts Epicli generates will have the following naming convention:
+
+```shell
+xxx_resourc-name-nr.tf
+```
+
+And will be placed in the following folder:
+
+```shell
+/shared/build/clustername/terraform
+```
+
+When Epicli is run/re-run any Terraform scripts which will start with the ```xxx_*.tf``` filter  will be removed and regenerated. The user can make custom Terraform scripts and place them allongside the Epicli generated ones and these will be applied/re-applied during the Epicli run.
+
+If you need to define any additional security rules for component subnets for custom infrastructure you can check the documentation [here](./SECURITY_GROUPS.md).

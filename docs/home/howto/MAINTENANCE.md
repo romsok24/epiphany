@@ -71,7 +71,7 @@ For more information, refer to [the official documentation](https://kubernetes.i
 To check the if a Keycloak service deployed on Kubernetes is running with the command:
 
 ```shell
-kubectl get pods --kubeconfig=/etc/kubernetes/admin.conf --namespace=keycloak_service_namespace --field-selector=status.phase=Running | grep keycloak_service_name
+kubectl get pods --kubeconfig=/etc/kubernetes/admin.conf --namespace=keycloak --field-selector=status.phase=Running | grep keycloak
 ```
 
 #### - HAProxy
@@ -121,12 +121,12 @@ To check status of Node Exporter, use the command:
 status prometheus-node-exporter
 ```
 
-#### - Elasticsearch
+#### - OpenSearch
 
-To check status of Elasticsearch, use the command:
+To check the status of OpenSearch we can use the command:
 
 ```shell
-systemct status elasticsearch
+systemct status opensearch
 ```
 
 Check if service is listening on 9200 (API communication port):
@@ -141,7 +141,7 @@ Check if service is listening on 9300 (nodes communication port):
 netstat -antup | grep 9300
 ```
 
-Check status of Elasticsearch cluster:
+We can also check the status of OpenSearch cluster:
 
 ```shell
 <IP>:9200/_cluster/health

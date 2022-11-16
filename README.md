@@ -1,6 +1,14 @@
 # Epiphany Platform
 [![GitHub release](https://img.shields.io/github/v/release/epiphany-platform/epiphany.svg)](https://github.com/epiphany-platform/epiphany/releases)
 [![Github license](https://img.shields.io/github/license/epiphany-platform/epiphany)](https://github.com/epiphany-platform/epiphany/releases)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=epiphany-platform_epiphany&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=epiphany-platform_epiphany)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=epiphany-platform_epiphany&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=epiphany-platform_epiphany)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=epiphany-platform_epiphany&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=epiphany-platform_epiphany)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=epiphany-platform_epiphany&metric=bugs)](https://sonarcloud.io/summary/new_code?id=epiphany-platform_epiphany)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=epiphany-platform_epiphany&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=epiphany-platform_epiphany)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=epiphany-platform_epiphany&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=epiphany-platform_epiphany)
+
+**⚠️ Epiphany is no longer under active development, no new features or upgrades will be done by the [core team](https://github.com/orgs/epiphany-platform/teams/epiphany-team). The [core team](https://github.com/orgs/epiphany-platform/teams/epiphany-team) however, will address critical defects and security issues during the [LTS versions](docs/home/LIFECYCLE.md) lifecycle. Finally the  [core team](https://github.com/orgs/epiphany-platform/teams/epiphany-team) will continue the [governance](docs/home/GOVERNANCE.md) of external contributions and publish intermittent releases for [LTS versions](docs/home/LIFECYCLE.md) during their lifecycle.⚠️**
 
 ## Overview
 
@@ -8,9 +16,9 @@ Epiphany at its core is a full automation of Kubernetes and Docker plus addition
 
 - Kafka or RabbitMQ for high speed messaging/events
 - Prometheus and Alertmanager for monitoring with Graphana for visualization
-- Elasticsearch and Kibana for centralized logging (OpenDistro)
+- OpenSearch for centralized logging
 - HAProxy for loadbalancing
-- Postgres and Elasticsearch for data storage
+- Postgres and OpenSearch for data storage
 - KeyCloak for authentication
 - Helm as package manager for Kubernetes
 

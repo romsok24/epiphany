@@ -6,12 +6,14 @@ from cli.src.models.AnsibleHostModel import AnsibleOrderedHostModel
 
 
 class APIProxy:
-    def __init__(self, cluster_model, config_docs):
+    def __init__(self, cluster_model, config_docs=[]):
         self.cluster_model = cluster_model
         self.config_docs = config_docs
         credentials = self.cluster_model.specification.cloud.credentials
-        self.session = boto3.session.Session(aws_access_key_id=credentials.key,
-                                             aws_secret_access_key=credentials.secret,
+        session_token = credentials.session_token if credentials.session_token else None
+        self.session = boto3.session.Session(aws_access_key_id=credentials.access_key_id,
+                                             aws_secret_access_key=credentials.secret_access_key,
+                                             aws_session_token=session_token,
                                              region_name=self.cluster_model.specification.cloud.region)
 
     def __enter__(self):
@@ -58,6 +60,11 @@ class APIProxy:
 
         result.sort()
         return result
+
+    def login(self, env=None):
+        # Pass to match the interface of the 'aws' provider APIProxy. For 'was' provider we already login with
+        # key_id and secret when we create the BOTO3 session.
+        pass
 
     def get_image_id(self, os_full_name):
         ec2 = self.session.resource('ec2')

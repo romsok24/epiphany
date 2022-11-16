@@ -1,0 +1,23 @@
+---
+- name: Node Exporter | Include defaults from node_exporter role
+  include_vars:
+    file: defaults/main.yml
+    name: exporter_defaults
+
+- name: Node Exporter | Include specification vars from node_exporter role
+  include_vars:
+    file: vars/main.yml
+    name: exporter_vars
+
+- name: Include upgrade tasks for Node Exporter as System Service
+  include_tasks: upgrade/system-service.yml
+  when: >
+    k8s_as_cloud_service is not defined or
+    not k8s_as_cloud_service or
+    k8s_as_cloud_service is defined and k8s_as_cloud_service and not 'kubernetes_master' in group_names and not 'kubernetes_node' in group_names
+
+- name: Include upgrade tasks for Node Exporter as DaemonSet for "k8s as cloud service"
+  include_tasks: upgrade/daemonset.yml
+  when:
+    - k8s_as_cloud_service is defined
+    - k8s_as_cloud_service

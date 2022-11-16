@@ -1,17 +1,17 @@
 ---
 supported_oses:
-  - name: CentOS
+  - name: AlmaLinux
     version:
-      min: 7.6
-      max: 7.9
+      min: '8.4'
+      max: '8.10'
   - name: RedHat
     version:
-      min: 7.6
-      max: 7.9
+      min: '8.4'
+      max: '8.10'  # based on https://access.redhat.com/support/policy/updates/errata#RHEL8_Life_Cycle
   - name: Ubuntu
     version:
-      min: 20.04
-      max: 20.04
+      min: '20.04'
+      max: '20.04'
 
 # The list of unsupported K8s applications per architecture
 unsupported_apps:
@@ -27,67 +27,69 @@ unsupported_roles:
   - distro: Ubuntu
     arch: aarch64
     roles:
-      - repository
-      - kafka
+      - applications
+      - elasticsearch_curator
+      - filebeat
       - firewall
+      - grafana
+      - haproxy
+      - helm
       - image_registry
+      - jmx_exporter
+      - kafka
+      - kafka_exporter
       - kubernetes_master
       - kubernetes_node
-      - helm
-      - zookeeper
-      - haproxy
       - logging
-      - elasticsearch_curator
-      - opendistro_for_elasticsearch
-      - elasticsearch
-      - kibana
-      - filebeat
-      - prometheus
-      - grafana
       - node_exporter
-      - jmx_exporter
-      - rabbitmq
-      - kafka_exporter
+      - opensearch
+      - opensearch_dashboards
       - postgresql
       - postgres_exporter
-      - applications
-  - distro: CentOS
+      - prometheus
+      - rabbitmq
+      - repository
+      - rook
+      - zookeeper
+
+  - distro: AlmaLinux
     arch: x86_64
     roles: []  # all supported
-  - distro: CentOS
+  - distro: AlmaLinux
     arch: aarch64
     roles:
       - elasticsearch_curator
+      - rook
   - distro: RedHat
     arch: x86_64
     roles: []  # all supported
   - distro: RedHat
     arch: aarch64
     roles:
-      - repository
-      - kafka
+      - applications
+      - elasticsearch_curator
+      - filebeat
       - firewall
+      - grafana
+      - haproxy
+      - helm
       - image_registry
+      - jmx_exporter
+      - kafka
+      - kafka_exporter
       - kubernetes_master
       - kubernetes_node
-      - helm
-      - zookeeper
-      - haproxy
       - logging
-      - elasticsearch_curator
-      - opendistro_for_elasticsearch
-      - elasticsearch
-      - kibana
-      - filebeat
-      - prometheus
-      - grafana
       - node_exporter
-      - jmx_exporter
-      - rabbitmq
-      - kafka_exporter
+      - opensearch
+      - opensearch_dashboards
       - postgresql
       - postgres_exporter
-      - applications
+      - prometheus
+      - rabbitmq
+      - repository
+      - rook
+      - zookeeper
 
 unsupported_postgres_extensions:
   x86_64: []

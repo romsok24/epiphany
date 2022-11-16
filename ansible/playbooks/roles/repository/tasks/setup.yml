@@ -12,20 +12,15 @@
 - name: Set OS name for download script
   set_fact:
     download_requirements_os_name: >-
-      {{ 'centos-7' if (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7') else
-          'redhat-7' if (ansible_distribution == 'RedHat' and ansible_distribution_major_version == '7') else
-          'ubuntu-20.04' if (ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04') else None }}
+      {{ 'almalinux-8' if (ansible_distribution == 'AlmaLinux' and ansible_distribution_major_version == '8') else
+         'rhel-8' if (ansible_distribution == 'RedHat' and ansible_distribution_major_version == '8') else
+         'ubuntu-20.04' if (ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04') else
+         'detect' }}
 
 - name: Download Epiphany requirements on repository host  # online mode
   block:
     - name: Install required packages for repository
       include_tasks: "{{ ansible_os_family }}/install-packages.yml"
-
-    - name: Install Poyo library for YAML support
-      pip:
-        name: poyo==0.5.0
-        executable: pip3
-        extra_args: --user
 
     - name: Create download-requirements directory
       file:
@@ -33,13 +28,11 @@
         state: directory
 
     - name: Copy files for downloading requirements to repository host
-      synchronize:
-        src: download-requirements/
-        dest: "{{ download_requirements_dir }}"
-        recursive: true
-        rsync_opts:
-          - "--exclude=tests"  # tests not needed
-          - "--exclude=__pycache__"
+      include_tasks: copy-download-requirements.yml
+      vars:
+        _arch_type: "{{ ansible_architecture }}"
+        _family_type: "{{ ansible_os_family | lower }}"
+        _os_type: "{{ download_requirements_os_name }}"
 
     - name: Make download script executable
       file:
@@ -66,19 +59,26 @@
     - not custom_repository_url
     - inventory_hostname in target_repository_hostnames
 
-- include_tasks: check-whether-to-run-download.yml  # sets 'stat_flag_file'
+- include_tasks: check-whether-to-run-download.yml  # sets 'skip_download_requirements_script'
   when:
     - not offline_mode
     - not custom_repository_url
     - inventory_hostname in target_repository_hostnames
 
-- include_tasks: clean-up-epirepo.yml
-  when:
-    - is_upgrade_run
-    - inventory_hostname in target_repository_hostnames
-    - custom_repository_url or
-      offline_mode or
-      not stat_flag_file.stat.exists  # do not clean up when skipping download
+- name: Clean up epirepo
+  block:
+  - name: Get stats of optional distro files
+    stat:
+      path: "{{ _files_layout['distro_files'] }}"
+    register: distro_files_stats
+
+  - name: Run the clean up script
+    include_tasks: clean-up-epirepo.yml
+    vars:
+      # contents:
+      _files_content:
+        distro_files: "{{ lookup('file', _files_layout['distro_files']) | from_yaml if distro_files_stats.stat.exists else {'files': {}} }}"
+        files: "{{ lookup('file', _files_layout['files']) | from_yaml }}"
   vars:
     # general paths:
     _reqs_dir: download-requirements/requirements
@@ -89,11 +89,12 @@
     _files_layout:
       distro_files: "{{ _distro_dir }}/files.yml"
       files: "{{ _arch_dir }}/files.yml"
-
-    # contents:
-    _files_content:
-      distro_files: "{{ lookup('file', _files_layout['distro_files']) | from_yaml }}"
-      files: "{{ lookup('file', _files_layout['files']) | from_yaml }}"
+  when:
+    - is_upgrade_run
+    - inventory_hostname in target_repository_hostnames
+    - custom_repository_url or
+      offline_mode or
+      not skip_download_requirements_script  # do not clean up when skipping download
 
 - name: |-
     Copy requirements for offline installation to repository host, this can take a long time
@@ -115,11 +116,13 @@
     - not offline_mode
     - not custom_repository_url
     - inventory_hostname in target_repository_hostnames
-    - not stat_flag_file.stat.exists
+    - not skip_download_requirements_script
 
 - name: Set up repositories
   include_tasks: "{{ ansible_os_family }}/setup.yml"
 
 - name: Include Helm repository creation
   include_tasks: "create-helm-repo.yml"
-  when: inventory_hostname == target_repository_hostnames[0]
+  when:
+    - inventory_hostname == target_repository_hostnames[0]
+    - (groups['kubernetes_master'] is defined and inventory_hostname in groups['kubernetes_master'])

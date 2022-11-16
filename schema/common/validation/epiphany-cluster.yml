@@ -1,3 +1,4 @@
+---
 "$id": "#/specification"
 title: "Cluster specification schema"
 description: "The main cluster specification"
@@ -79,19 +80,25 @@ properties:
         type: object
         title: The Credentials Schema
         required:
-        - key
-        - secret
+        - access_key_id
+        - secret_access_key
         properties:
-          key:
-            "$id": "#/properties/specification/properties/cloud/properties/credentials/properties/key"
+          access_key_id:
+            "$id": "#/properties/specification/properties/cloud/properties/credentials/properties/access_key_id"
             type: string
-            title: The Key Schema
+            title: The Key Id Schema
             pattern: "^(.*)$"
-          secret:
-            "$id": "#/properties/specification/properties/cloud/properties/credentials/properties/secret"
+          secret_access_key:
+            "$id": "#/properties/specification/properties/cloud/properties/credentials/properties/secret_access_key"
             type: string
             title: The Secret Schema
             pattern: "^(.*)$"
+          session_token:
+            "$id": "#/properties/specification/properties/cloud/properties/credentials/properties/session_token"
+            type: string
+            title: The session token
+            description: "Session token cannot contain whitespaces"
+            pattern: "^[^\\s]*$"
       network:
         "$id": "#/properties/specification/properties/cloud/properties/network"
         type: object
@@ -110,11 +117,11 @@ properties:
         default: 'default'
         examples:
         - default
+        - almalinux-8-arm64
+        - almalinux-8-x86_64
+        - rhel-8-x86_64
         - ubuntu-20.04-x86_64
-        - redhat-7-x86_64
-        - centos-7-x86_64
-        - centos-7-arm64
-        pattern: ^(default|ubuntu-20.04-x86_64|redhat-7-x86_64|centos-7-x86_64|centos-7-arm64)$
+        pattern: ^(default|almalinux-8-arm64|almalinux-8-x86_64|rhel-8-x86_64|ubuntu-20.04-x86_64)$
       hostname_domain_extension:
         "$id": "#/properties/specification/properties/cloud/properties/hostname_domain_extension"
         type: string
@@ -122,7 +129,7 @@ properties:
         default: ''
         examples:
         - extension
-        pattern: "^[a-zA-Z0-9.-]{0,20}$"
+        pattern: "^[a-zA-Z0-9.-]*$"
   components:
     "$id": "#/properties/components"
     type: object
@@ -137,9 +144,9 @@ properties:
           properties:
             kubernetes_master:
               properties:
-                count: { type: integer, enum: [0] }
+                count: {type: integer, enum: [0]}
         then:
           properties:
             kubernetes_node:
               properties:
-                count: { type: integer, enum: [0] }
+                count: {type: integer, enum: [0]}

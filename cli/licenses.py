@@ -14,7 +14,7 @@ LICENSES = [
     },
     {
         "Name": "ansible-core",
-        "Version": "2.12.1",
+        "Version": "2.13.3",
         "Summary": "Radically simple IT automation",
         "Home-page": "https://ansible.com/",
         "Author": "Ansible, Inc.",
@@ -22,7 +22,7 @@ LICENSES = [
     },
     {
         "Name": "ansible",
-        "Version": "5.2.0",
+        "Version": "6.2.0",
         "Summary": "Radically simple IT automation",
         "Home-page": "https://ansible.com/",
         "Author": "Ansible, Inc.",
@@ -44,7 +44,7 @@ LICENSES = [
         "Author": "Microsoft",
         "License": "MIT License",
         "License URL": "https://api.github.com/repos/microsoft/applicationinsights-python/license",
-        "License repo": "The MIT License (MIT)\n\nCopyright (c) 2018 Microsoft\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\n",
+        "License repo": "Copyright (c) Microsoft Corporation.\n\nMIT License\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
         "License text": "MIT License\n\nCopyright (c) [year] [fullname]\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
     },
     {
@@ -120,7 +120,7 @@ LICENSES = [
     },
     {
         "Name": "azure-common",
-        "Version": "1.1.27",
+        "Version": "1.1.28",
         "Summary": "Microsoft Azure Client Library for Python (Common)",
         "Home-page": "https://github.com/Azure/azure-sdk-for-python",
         "Author": "Microsoft Corporation",
@@ -131,7 +131,7 @@ LICENSES = [
     },
     {
         "Name": "azure-core",
-        "Version": "1.21.1",
+        "Version": "1.24.0",
         "Summary": "Microsoft Azure Core Library for Python",
         "Home-page": "https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core",
         "Author": "Microsoft Corporation",
@@ -154,9 +154,10 @@ LICENSES = [
         "Summary": "Azure Data Lake Store Filesystem Client Library for Python",
         "Home-page": "https://github.com/Azure/azure-data-lake-store-python",
         "Author": "Microsoft Corporation",
-        "License": "Other",
+        "License": "MIT License",
         "License URL": "https://api.github.com/repos/azure/azure-data-lake-store-python/license",
-        "License repo": "\ufeffThe MIT License (MIT)\n\nCopyright (c) 2016 Microsoft\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+        "License repo": "\ufeffThe MIT License (MIT)\n\nCopyright (c) 2016 Microsoft\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+        "License text": "MIT License\n\nCopyright (c) [year] [fullname]\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
     },
     {
         "Name": "azure-graphrbac",
@@ -171,7 +172,7 @@ LICENSES = [
     },
     {
         "Name": "azure-identity",
-        "Version": "1.7.1",
+        "Version": "1.10.0",
         "Summary": "Microsoft Azure Identity Library for Python",
         "Home-page": "https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/identity/azure-identity",
         "Author": "Microsoft Corporation",
@@ -401,7 +402,7 @@ LICENSES = [
     },
     {
         "Name": "azure-mgmt-cosmosdb",
-        "Version": "7.0.0b2",
+        "Version": "7.0.0b6",
         "Summary": "Microsoft Azure Cosmos DB Management Client Library for Python",
         "Home-page": "https://github.com/Azure/azure-sdk-for-python",
         "Author": "Microsoft Corporation",
@@ -929,8 +930,8 @@ LICENSES = [
     },
     {
         "Name": "azure-mgmt-sqlvirtualmachine",
-        "Version": "1.0.0b1",
-        "Summary": "Microsoft Azure Sqlvirtualmachine Management Client Library for Python",
+        "Version": "1.0.0b2",
+        "Summary": "Microsoft Azure Sql Virtual Machine Management Client Library for Python",
         "Home-page": "https://github.com/Azure/azure-sdk-for-python",
         "Author": "Microsoft Corporation",
         "License": "MIT License",
@@ -951,7 +952,7 @@ LICENSES = [
     },
     {
         "Name": "azure-mgmt-synapse",
-        "Version": "2.1.0b4",
+        "Version": "2.1.0b5",
         "Summary": "Microsoft Azure Synapse Management Client Library for Python",
         "Home-page": "https://github.com/Azure/azure-sdk-for-python",
         "Author": "Microsoft Corporation",
@@ -1061,7 +1062,7 @@ LICENSES = [
     },
     {
         "Name": "bcrypt",
-        "Version": "3.2.0",
+        "Version": "3.2.2",
         "Summary": "Modern password hashing for your software and your servers",
         "Home-page": "https://github.com/pyca/bcrypt/",
         "Author": "The Python Cryptographic Authority developers",
@@ -1072,7 +1073,7 @@ LICENSES = [
     },
     {
         "Name": "boto3",
-        "Version": "1.20.43",
+        "Version": "1.24.57",
         "Summary": "The AWS SDK for Python",
         "Home-page": "https://github.com/boto/boto3",
         "Author": "Amazon Web Services",
@@ -1083,7 +1084,7 @@ LICENSES = [
     },
     {
         "Name": "botocore",
-        "Version": "1.23.43",
+        "Version": "1.27.57",
         "Summary": "Low-level, data-driven core of boto 3.",
         "Home-page": "https://github.com/boto/botocore",
         "Author": "Amazon Web Services",
@@ -1094,11 +1095,13 @@ LICENSES = [
     },
     {
         "Name": "certifi",
-        "Version": "2021.10.8",
+        "Version": "2022.5.18.1",
         "Summary": "Python package for providing Mozilla's CA Bundle.",
-        "Home-page": "https://certifiio.readthedocs.io/en/latest/",
+        "Home-page": "https://github.com/certifi/python-certifi",
         "Author": "Kenneth Reitz",
-        "License": "MPL-2.0"
+        "License": "Other",
+        "License URL": "https://api.github.com/repos/certifi/python-certifi/license",
+        "License repo": "This package contains a modified version of ca-bundle.crt:\n\nca-bundle.crt -- Bundle of CA Root Certificates\n\nCertificate data from Mozilla as of: Thu Nov  3 19:04:19 2011#\nThis is a bundle of X.509 certificates of public Certificate Authorities\n(CA). These were automatically extracted from Mozilla's root certificates\nfile (certdata.txt).  This file can be found in the mozilla source tree:\nhttps://hg.mozilla.org/mozilla-central/file/tip/security/nss/lib/ckfw/builtins/certdata.txt\nIt contains the certificates in PEM format and therefore\ncan be directly used with curl / libcurl / php_curl, or with\nan Apache+mod_ssl webserver for SSL client authentication.\nJust configure this file as the SSLCACertificateFile.#\n\n***** BEGIN LICENSE BLOCK *****\nThis Source Code Form is subject to the terms of the Mozilla Public License,\nv. 2.0. If a copy of the MPL was not distributed with this file, You can obtain\none at http://mozilla.org/MPL/2.0/.\n\n***** END LICENSE BLOCK *****\n@(#) $RCSfile: certdata.txt,v $ $Revision: 1.80 $ $Date: 2011/11/03 15:11:58 $\n"
     },
     {
         "Name": "cffi",
@@ -1121,7 +1124,7 @@ LICENSES = [
     },
     {
         "Name": "charset-normalizer",
-        "Version": "2.0.10",
+        "Version": "2.0.12",
         "Summary": "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet.",
         "Home-page": "https://github.com/ousret/charset_normalizer",
         "Author": "Ahmed TAHRI @Ousret",
@@ -1131,8 +1134,16 @@ LICENSES = [
         "License text": "MIT License\n\nCopyright (c) [year] [fullname]\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
     },
     {
+        "Name": "click",
+        "Version": "8.1.3",
+        "Summary": "Composable command line interface toolkit",
+        "Home-page": "https://palletsprojects.com/p/click/",
+        "Author": "Armin Ronacher",
+        "License": "BSD-3-Clause"
+    },
+    {
         "Name": "colorama",
-        "Version": "0.4.4",
+        "Version": "0.4.5",
         "Summary": "Cross-platform colored terminal text.",
         "Home-page": "https://github.com/tartley/colorama",
         "Author": "Jonathan Hartley",
@@ -1143,7 +1154,7 @@ LICENSES = [
     },
     {
         "Name": "cryptography",
-        "Version": "36.0.1",
+        "Version": "37.0.2",
         "Summary": "cryptography is a package which provides cryptographic recipes and primitives to Python developers.",
         "Home-page": "https://github.com/pyca/cryptography",
         "Author": "The Python Cryptographic Authority and individual contributors",
@@ -1175,9 +1186,9 @@ LICENSES = [
     },
     {
         "Name": "fabric",
-        "Version": "2.6.0",
+        "Version": "2.7.0",
         "Summary": "High level SSH command execution",
-        "Home-page": "http://fabfile.org",
+        "Home-page": "https://fabfile.org",
         "Author": "Jeff Forcier",
         "License": "BSD"
     },
@@ -1202,9 +1213,9 @@ LICENSES = [
     },
     {
         "Name": "invoke",
-        "Version": "1.6.0",
+        "Version": "1.7.1",
         "Summary": "Pythonic task execution",
-        "Home-page": "http://docs.pyinvoke.org",
+        "Home-page": "https://pyinvoke.org",
         "Author": "Jeff Forcier",
         "License": "BSD"
     },
@@ -1232,7 +1243,7 @@ LICENSES = [
     },
     {
         "Name": "Jinja2",
-        "Version": "3.0.3",
+        "Version": "3.1.2",
         "Summary": "A very fast and expressive template engine.",
         "Home-page": "https://palletsprojects.com/p/jinja/",
         "Author": "Armin Ronacher",
@@ -1240,7 +1251,7 @@ LICENSES = [
     },
     {
         "Name": "jmespath",
-        "Version": "0.10.0",
+        "Version": "1.0.0",
         "Summary": "JSON Matching Expressions",
         "Home-page": "https://github.com/jmespath/jmespath.py",
         "Author": "James Saryerwinnie",
@@ -1261,14 +1272,11 @@ LICENSES = [
     },
     {
         "Name": "jsonschema",
-        "Version": "4.4.0",
+        "Version": "4.14.0",
         "Summary": "An implementation of JSON Schema validation for Python",
-        "Home-page": "https://github.com/Julian/jsonschema",
+        "Home-page": "",
         "Author": "Julian Berman",
-        "License": "MIT License",
-        "License URL": "https://api.github.com/repos/julian/jsonschema/license",
-        "License repo": "Copyright (c) 2013 Julian Berman\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n",
-        "License text": "MIT License\n\nCopyright (c) [year] [fullname]\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+        "License": "MIT"
     },
     {
         "Name": "knack",
@@ -1283,7 +1291,7 @@ LICENSES = [
     },
     {
         "Name": "MarkupSafe",
-        "Version": "2.0.1",
+        "Version": "2.1.1",
         "Summary": "Safely add untrusted strings to HTML/XML markup.",
         "Home-page": "https://palletsprojects.com/p/markupsafe/",
         "Author": "Armin Ronacher",
@@ -1299,7 +1307,7 @@ LICENSES = [
     },
     {
         "Name": "msal",
-        "Version": "1.16.0",
+        "Version": "1.17.0",
         "Summary": "The Microsoft Authentication Library (MSAL) for Python library enables your app to access the Microsoft Cloud by supporting authentication of users with Microsoft Azure Active Directory accounts (AAD) and Microsoft Accounts (MSA) using industry standard OAuth2 and OpenID Connect.",
         "Home-page": "https://github.com/AzureAD/microsoft-authentication-library-for-python",
         "Author": "Microsoft Corporation",
@@ -1331,7 +1339,7 @@ LICENSES = [
     },
     {
         "Name": "oauthlib",
-        "Version": "3.1.1",
+        "Version": "3.2.0",
         "Summary": "A generic, spec-compliant, thorough implementation of the OAuth request-signing logic",
         "Home-page": "https://github.com/oauthlib/oauthlib",
         "Author": "The OAuthlib Community",
@@ -1352,7 +1360,7 @@ LICENSES = [
     },
     {
         "Name": "paramiko",
-        "Version": "2.9.2",
+        "Version": "2.11.0",
         "Summary": "SSH2 protocol library",
         "Home-page": "https://paramiko.org",
         "Author": "Jeff Forcier",
@@ -1360,12 +1368,12 @@ LICENSES = [
     },
     {
         "Name": "pathlib2",
-        "Version": "2.3.6",
+        "Version": "2.3.7.post1",
         "Summary": "Object-oriented filesystem paths",
-        "Home-page": "https://github.com/mcmtroffaes/pathlib2",
+        "Home-page": "https://github.com/jazzband/pathlib2",
         "Author": "Matthias C. M. Troffaes",
         "License": "MIT License",
-        "License URL": "https://api.github.com/repos/mcmtroffaes/pathlib2/license",
+        "License URL": "https://api.github.com/repos/jazzband/pathlib2/license",
         "License repo": "The MIT License (MIT)\n\nCopyright (c) 2014-2017 Matthias C. M. Troffaes\nCopyright (c) 2012-2014 Antoine Pitrou and contributors\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\n",
         "License text": "MIT License\n\nCopyright (c) [year] [fullname]\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
     },
@@ -1383,13 +1391,14 @@ LICENSES = [
         "Summary": "Wraps the portalocker recipe for easy usage",
         "Home-page": "https://github.com/WoLpH/portalocker",
         "Author": "Rick van Hattem",
-        "License": "Other",
+        "License": "BSD 3-Clause \"New\" or \"Revised\" License",
         "License URL": "https://api.github.com/repos/wolph/portalocker/license",
-        "License repo": "PYTHON SOFTWARE FOUNDATION LICENSE VERSION 2\n--------------------------------------------\n\n1. This LICENSE AGREEMENT is between the Python Software Foundation\n(\"PSF\"), and the Individual or Organization (\"Licensee\") accessing and\notherwise using this software (\"Python\") in source or binary form and\nits associated documentation.\n\n2. Subject to the terms and conditions of this License Agreement, PSF hereby\ngrants Licensee a nonexclusive, royalty-free, world-wide license to reproduce,\nanalyze, test, perform and/or display publicly, prepare derivative works,\ndistribute, and otherwise use Python alone or in any derivative version,\nprovided, however, that PSF's License Agreement and PSF's notice of copyright,\ni.e., \"Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010\nPython Software Foundation; All Rights Reserved\" are retained in Python alone or\nin any derivative version prepared by Licensee.\n\n3. In the event Licensee prepares a derivative work that is based on\nor incorporates Python or any part thereof, and wants to make\nthe derivative work available to others as provided herein, then\nLicensee hereby agrees to include in any such work a brief summary of\nthe changes made to Python.\n\n4. PSF is making Python available to Licensee on an \"AS IS\"\nbasis.  PSF MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR\nIMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, PSF MAKES NO AND\nDISCLAIMS ANY REPRESENTATION OR WARRANTY OF MERCHANTABILITY OR FITNESS\nFOR ANY PARTICULAR PURPOSE OR THAT THE USE OF PYTHON WILL NOT\nINFRINGE ANY THIRD PARTY RIGHTS.\n\n5. PSF SHALL NOT BE LIABLE TO LICENSEE OR ANY OTHER USERS OF PYTHON\nFOR ANY INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES OR LOSS AS\nA RESULT OF MODIFYING, DISTRIBUTING, OR OTHERWISE USING PYTHON,\nOR ANY DERIVATIVE THEREOF, EVEN IF ADVISED OF THE POSSIBILITY THEREOF.\n\n6. This License Agreement will automatically terminate upon a material\nbreach of its terms and conditions.\n\n7. Nothing in this License Agreement shall be deemed to create any\nrelationship of agency, partnership, or joint venture between PSF and\nLicensee.  This License Agreement does not grant permission to use PSF\ntrademarks or trade name in a trademark sense to endorse or promote\nproducts or services of Licensee, or any third party.\n\n8. By copying, installing or otherwise using Python, Licensee\nagrees to be bound by the terms and conditions of this License\nAgreement.\n\n"
+        "License repo": "Copyright 2022 Rick van Hattem\n\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n",
+        "License text": "BSD 3-Clause License\n\nCopyright (c) [year], [fullname]\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its\n   contributors may be used to endorse or promote products derived from\n   this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
     },
     {
         "Name": "psutil",
-        "Version": "5.9.0",
+        "Version": "5.9.1",
         "Summary": "Cross-platform lib for process and system monitoring in Python.",
         "Home-page": "https://github.com/giampaolo/psutil",
         "Author": "Giampaolo Rodola",
@@ -1421,7 +1430,7 @@ LICENSES = [
     },
     {
         "Name": "Pygments",
-        "Version": "2.11.2",
+        "Version": "2.12.0",
         "Summary": "Pygments is a syntax highlighting package written in Python.",
         "Home-page": "https://pygments.org/",
         "Author": "Georg Brandl",
@@ -1429,13 +1438,13 @@ LICENSES = [
     },
     {
         "Name": "PyJWT",
-        "Version": "2.3.0",
+        "Version": "2.4.0",
         "Summary": "JSON Web Token implementation in Python",
         "Home-page": "https://github.com/jpadilla/pyjwt",
         "Author": "Jose Padilla",
         "License": "MIT License",
         "License URL": "https://api.github.com/repos/jpadilla/pyjwt/license",
-        "License repo": "The MIT License (MIT)\n\nCopyright (c) 2015 Jos\u00e9 Padilla\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+        "License repo": "The MIT License (MIT)\n\nCopyright (c) 2015-2022 Jos\u00e9 Padilla\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
         "License text": "MIT License\n\nCopyright (c) [year] [fullname]\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
     },
     {
@@ -1451,7 +1460,7 @@ LICENSES = [
     },
     {
         "Name": "pyOpenSSL",
-        "Version": "21.0.0",
+        "Version": "22.0.0",
         "Summary": "Python wrapper module around the OpenSSL library",
         "Home-page": "https://pyopenssl.org/",
         "Author": "The pyOpenSSL developers",
@@ -1459,14 +1468,11 @@ LICENSES = [
     },
     {
         "Name": "pyparsing",
-        "Version": "3.0.7",
-        "Summary": "Python parsing module",
-        "Home-page": "https://github.com/pyparsing/pyparsing/",
-        "Author": "Paul McGuire",
-        "License": "MIT License",
-        "License URL": "https://api.github.com/repos/pyparsing/pyparsing/license",
-        "License repo": "Permission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\"Software\"), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
-        "License text": "MIT License\n\nCopyright (c) [year] [fullname]\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+        "Version": "3.0.9",
+        "Summary": "pyparsing module - Classes and methods to define and execute parsing grammars",
+        "Home-page": "",
+        "Author": "",
+        "License": ""
     },
     {
         "Name": "pyrsistent",
@@ -1501,7 +1507,7 @@ LICENSES = [
     },
     {
         "Name": "python-json-logger",
-        "Version": "2.0.2",
+        "Version": "2.0.4",
         "Summary": "A python library adding a json log formatter",
         "Home-page": "http://github.com/madzak/python-json-logger",
         "Author": "Zakaria Zajac",
@@ -1520,7 +1526,7 @@ LICENSES = [
     },
     {
         "Name": "requests-oauthlib",
-        "Version": "1.3.0",
+        "Version": "1.3.1",
         "Summary": "OAuthlib authentication support for Requests.",
         "Home-page": "https://github.com/requests/requests-oauthlib",
         "Author": "Kenneth Reitz",
@@ -1539,7 +1545,7 @@ LICENSES = [
     },
     {
         "Name": "resolvelib",
-        "Version": "0.5.5",
+        "Version": "0.8.1",
         "Summary": "Resolve abstract dependencies into concrete ones",
         "Home-page": "https://github.com/sarugaku/resolvelib",
         "Author": "Tzu-ping Chung",
@@ -1558,7 +1564,7 @@ LICENSES = [
     },
     {
         "Name": "ruamel.yaml",
-        "Version": "0.17.20",
+        "Version": "0.17.21",
         "Summary": "ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order",
         "Home-page": "https://sourceforge.net/p/ruamel-yaml/code/ci/default/tree",
         "Author": "Anthon van der Neut",
@@ -1566,7 +1572,7 @@ LICENSES = [
     },
     {
         "Name": "s3transfer",
-        "Version": "0.5.0",
+        "Version": "0.6.0",
         "Summary": "An Amazon S3 Transfer Manager",
         "Home-page": "https://github.com/boto/s3transfer",
         "Author": "Amazon Web Services",
@@ -1630,8 +1636,16 @@ LICENSES = [
         "License text": "MIT License\n\nCopyright (c) [year] [fullname]\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
     },
     {
+        "Name": "typing_extensions",
+        "Version": "4.2.0",
+        "Summary": "Backported and Experimental Type Hints for Python 3.7+",
+        "Home-page": "",
+        "Author": "",
+        "License": ""
+    },
+    {
         "Name": "urllib3",
-        "Version": "1.26.8",
+        "Version": "1.26.9",
         "Summary": "HTTP library with thread-safe connection pooling, file post, and more.",
         "Home-page": "https://urllib3.readthedocs.io/",
         "Author": "Andrey Petrov",
@@ -1647,18 +1661,18 @@ LICENSES = [
     },
     {
         "Name": "wrapt",
-        "Version": "1.13.3",
+        "Version": "1.14.1",
         "Summary": "Module for decorators, wrappers and monkey patching.",
         "Home-page": "https://github.com/GrahamDumpleton/wrapt",
         "Author": "Graham Dumpleton",
         "License": "BSD 2-Clause \"Simplified\" License",
         "License URL": "https://api.github.com/repos/grahamdumpleton/wrapt/license",
-        "License repo": "Copyright (c) 2013-2019, Graham Dumpleton\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n* Redistributions of source code must retain the above copyright notice, this\n  list of conditions and the following disclaimer.\n\n* Redistributions in binary form must reproduce the above copyright notice,\n  this list of conditions and the following disclaimer in the documentation\n  and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\nARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE\nLIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\nSUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\nINTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\nCONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\nPOSSIBILITY OF SUCH DAMAGE.\n",
+        "License repo": "Copyright (c) 2013-2022, Graham Dumpleton\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n* Redistributions of source code must retain the above copyright notice, this\n  list of conditions and the following disclaimer.\n\n* Redistributions in binary form must reproduce the above copyright notice,\n  this list of conditions and the following disclaimer in the documentation\n  and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\nARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE\nLIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\nSUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\nINTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\nCONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\nPOSSIBILITY OF SUCH DAMAGE.\n",
         "License text": "BSD 2-Clause License\n\nCopyright (c) [year], [fullname]\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
     },
     {
         "Name": "xmltodict",
-        "Version": "0.12.0",
+        "Version": "0.13.0",
         "Summary": "Makes working with XML feel like you are working with JSON",
         "Home-page": "https://github.com/martinblech/xmltodict",
         "Author": "Martin Blech",

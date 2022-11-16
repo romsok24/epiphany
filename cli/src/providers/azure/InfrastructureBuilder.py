@@ -2,14 +2,17 @@ import os
 from copy import deepcopy
 
 from cli.src.helpers.config_merger import merge_with_defaults
-from cli.src.helpers.data_loader import load_schema_obj, types
+from cli.src.helpers.data_loader import load_schema_obj, schema_types
 from cli.src.helpers.doc_list_helpers import select_first, select_single
-from cli.src.helpers.naming_helpers import (cluster_tag, resource_name,
+from cli.src.helpers.naming_helpers import (cluster_tag,
+                                            get_os_name_normalized,
+                                            resource_name,
                                             storage_account_name)
 from cli.src.helpers.objdict_helpers import dict_to_objdict
-from cli.src.helpers.naming_helpers import get_os_name_normalized
 from cli.src.Step import Step
 from cli.version import VERSION
+
+HOST_NAME_MAX_LENGTH = 63
 
 
 class InfrastructureBuilder(Step):
@@ -76,6 +79,7 @@ class InfrastructureBuilder(Step):
                                     item.specification.address_prefix == subnet_definition['address_pool'])
 
             if subnet is None:
+                subnet_nsg_association_name = ''
                 subnet = self.get_subnet(subnet_definition, component_key, 0)
                 infrastructure.append(subnet)
 
@@ -90,6 +94,7 @@ class InfrastructureBuilder(Step):
                                                                                         nsg.specification.name,
                                                                                         0)
                     infrastructure.append(subnet_nsg_association)
+                    subnet_nsg_association_name = subnet_nsg_association.specification.name
 
             availability_set = None
             if 'availability_set' in component_value:
@@ -115,7 +120,7 @@ class InfrastructureBuilder(Step):
                                                                vm_config,
                                                                subnet.specification.name,
                                                                public_ip_name,
-                                                               subnet_nsg_association.specification.name,
+                                                               subnet_nsg_association_name,
                                                                index)
                 infrastructure.append(network_interface)
 
@@ -130,6 +135,7 @@ class InfrastructureBuilder(Step):
                     security_group_association_name = nic_nsg_association.specification.name
 
                 vm = self.get_vm(component_key,
+                                 component_value['alt_component_name'],
                                  vm_config,
                                  availability_set,
                                  network_interface.specification.name,
@@ -219,13 +225,16 @@ class InfrastructureBuilder(Step):
         storage_share.specification.storage_account_name = storage_account_name(self.cluster_prefix, self.cluster_name, 'k8s')
         return storage_share
 
-    def get_vm(self, component_key, vm_config, availability_set, network_interface_name, security_group_association_name, index):
+    def get_vm(self, component_key, alt_component_name, vm_config, availability_set, network_interface_name, security_group_association_name, index):
         vm = dict_to_objdict(deepcopy(vm_config))
-        vm.specification.name = resource_name(self.cluster_prefix, self.cluster_name, 'vm' + '-' + str(index), component_key)
+        host_component_key = alt_component_name if alt_component_name and alt_component_name.strip() else component_key
+        vm.specification.name = resource_name(self.cluster_prefix, self.cluster_name, f'vm-{index}', host_component_key)
         if self.hostname_domain_extension != '':
-            vm.specification.hostname = resource_name(self.cluster_prefix, self.cluster_name, 'vm' + '-' + str(index) + f'.{self.hostname_domain_extension}', component_key)
+            vm.specification.hostname = resource_name(self.cluster_prefix, self.cluster_name, f'vm-{index}.{self.hostname_domain_extension}', host_component_key)
         else:
             vm.specification.hostname = vm.specification.name
+        if len(vm.specification.hostname) > HOST_NAME_MAX_LENGTH:
+            raise Exception(f'Host name cannot exceed {HOST_NAME_MAX_LENGTH} characters in length, yours is {vm.specification.hostname}. Consider setting alt_component_name property.')
         vm.specification.admin_username = self.cluster_model.specification.admin_user.name
         vm.specification.network_interface_name = network_interface_name
         vm.specification.use_network_security_groups = self.use_network_security_groups
@@ -261,28 +270,34 @@ class InfrastructureBuilder(Step):
         # Check if we have a cluster-config OS image defined that we want to apply cluster wide.
         cloud_os_image_defaults = self.get_config_or_default(self.docs, 'infrastructure/cloud-os-image-defaults')
         cloud_image = self.cluster_model.specification.cloud.default_os_image
+
         if cloud_image != 'default':
             if not hasattr(cloud_os_image_defaults.specification, cloud_image):
                 raise NotImplementedError(f'default_os_image "{cloud_image}" is unsupported for "{self.cluster_model.provider}" provider.')
+
             model_with_defaults.specification.storage_image_reference = dict_to_objdict(deepcopy(cloud_os_image_defaults.specification[cloud_image]))
+
+            if 'plan' in cloud_os_image_defaults.specification[cloud_image]:
+                model_with_defaults.specification.plan = dict_to_objdict(deepcopy(cloud_os_image_defaults.specification[cloud_image].plan))
+                del model_with_defaults.specification.storage_image_reference.plan
 
         # finally check if we are trying to re-apply a configuration.
         if self.manifest_docs:
             manifest_vm_config = select_first(self.manifest_docs, lambda x: x.name == machine_selector and x.kind == 'infrastructure/virtual-machine')
-            manifest_firstvm_config = select_first(self.manifest_docs, lambda x: x.kind == 'infrastructure/virtual-machine')
 
-            if manifest_vm_config  is not None and model_with_defaults.specification.storage_image_reference == manifest_vm_config.specification.storage_image_reference:
-                return model_with_defaults
+            if manifest_vm_config is None:
+                manifest_vm_config = select_first(self.manifest_docs, lambda x: x.kind == 'infrastructure/virtual-machine')
 
-            if model_with_defaults.specification.storage_image_reference == manifest_firstvm_config.specification.storage_image_reference:
-                return model_with_defaults
+            if model_with_defaults.specification.storage_image_reference == manifest_vm_config.specification.storage_image_reference:
+                if (not 'plan' in manifest_vm_config.specification) or model_with_defaults.specification.plan == manifest_vm_config.specification.plan:
+                    return model_with_defaults
 
             self.logger.warning(f"Re-applying a different OS image might lead to data loss and/or other issues. Preserving the existing OS image used for VM definition '{machine_selector}'.")
 
-            if manifest_vm_config  is not None:
-                model_with_defaults.specification.storage_image_reference = dict_to_objdict(deepcopy(manifest_vm_config.specification.storage_image_reference))
-            else:
-                model_with_defaults.specification.storage_image_reference = dict_to_objdict(deepcopy(manifest_firstvm_config.specification.storage_image_reference))
+            model_with_defaults.specification.storage_image_reference = dict_to_objdict(deepcopy(manifest_vm_config.specification.storage_image_reference))
+
+            if 'plan' in manifest_vm_config.specification:
+                model_with_defaults.specification.plan = dict_to_objdict(deepcopy(manifest_vm_config.specification.plan))
 
         return model_with_defaults
 
@@ -290,6 +305,6 @@ class InfrastructureBuilder(Step):
     def get_config_or_default(docs, kind):
         config = select_first(docs, lambda x: x.kind == kind)
         if config is None:
-            config = load_schema_obj(types.DEFAULT, 'azure', kind)
+            config = load_schema_obj(schema_types.DEFAULT, 'azure', kind)
             config['version'] = VERSION
         return config

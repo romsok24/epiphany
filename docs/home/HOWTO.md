@@ -15,7 +15,6 @@
   - [How to create an Epiphany cluster using custom system repository and Docker image registry](./howto/CLUSTER.md#how-to-create-an-epiphany-cluster-using-custom-system-repository-and-docker-image-registry)
   - [How to create an Epiphany cluster on a cloud provider](./howto/CLUSTER.md#how-to-create-an-epiphany-cluster-on-a-cloud-provider)
     - [Note for RHEL Azure images](./howto/CLUSTER.md#note-for-rhel-azure-images)
-    - [Note for CentOS Azure images](./howto/CLUSTER.md#note-for-centos-azure-images)
     - [How to disable merging LVM logical volumes](./howto/CLUSTER.md#how-to-disable-merging-lvm-logical-volumes)
   - [How to delete an Epiphany cluster on a cloud provider](./howto/CLUSTER.md#how-to-delete-an-epiphany-cluster-on-a-cloud-provider)
   - [Single machine cluster](./howto/CLUSTER.md#single-machine-cluster)
@@ -27,6 +26,7 @@
   - [RabbitMQ installation and setting](./howto/CLUSTER.md#rabbitmq-installation-and-setting)
   - [How to use Azure availability sets](./howto/CLUSTER.md#how-to-use-azure-availability-sets)
   - [Downloading offline requirements with a Docker container](./howto/CLUSTER.md#downloading-offline-requirements-with-a-docker-container)
+  - [How to additional custom Terraform templates](./howto/CLUSTER.md#how-to-additional-custom-terraform-templates)
 
 - [Monitoring](./howto/MONITORING.md)
   - [How to enable provided Prometheus rules](./howto/MONITORING.md#how-to-enable-provided-prometheus-rules)
@@ -34,8 +34,8 @@
   - [How to configure scalable Prometheus setup](./howto/MONITORING.md#how-to-configure-scalable-prometheus-setup)
   - [Import and create Grafana dashboards](./howto/MONITORING.md#import-and-create-grafana-dashboards)
   - [How to setup default admin password and user in Grafana](./howto/MONITORING.md#how-to-setup-default-admin-password-and-user-in-grafana)
-  - [How to configure Kibana - Open Distro](./howto/MONITORING.md#how-to-configure-kibana---open-distro)
-  - [How to configure default user passwords for Kibana - Open Distro, Open Distro for Elasticsearch and Filebeat](./howto/MONITORING.md#how-to-configure-default-user-passwords-for-kibana---open-distro-open-distro-for-elasticsearch-and-filebeat)
+  - [How to configure OpenSearch Dashboards](./howto/MONITORING.md#how-to-configure-opensearch-dashboards)
+  - [How to configure default passwords for service users in OpenSearch Dashboards, OpenSearch and Filebeat](./howto/MONITORING.md#how-to-configure-default-passwords-for-service-users-in-opensearch-dashboards-opensearch-and-filebeat)
   - [How to configure scalable Prometheus setup](./howto/MONITORING.md#how-to-configure-scalable-prometheus-setup)
   - [How to configure Azure additional monitoring and alerting](./howto/MONITORING.md#how-to-configure-azure-additional-monitoring-and-alerting)
   - [How to configure AWS additional monitoring and alerting](./howto/MONITORING.md#how-to-configure-aws-additional-monitoring-and-alerting)
@@ -48,6 +48,9 @@
   - [Persistent storage](./howto/kubernetes/PERSISTENT_STORAGE.md)
   - [Certificate management](./howto/kubernetes/CERTIFICATES.md)
 
+- [Keycloak](./howto/KEYCLOAK.md)
+  - [How to run Keycloak](./howto/KEYCLOAK.md#how-to-run-keycloak)
+
 - [Helm](./howto/HELM.md)
   - [Helm "system" chart repository](./howto/HELM.md#helm-system-chart-repository)
   - [Installing Helm charts from the "system" repository](./howto/HELM.md#installing-helm-charts-from-the-system-repository)
@@ -59,6 +62,7 @@
   - [Run apply after upgrade](./howto/UPGRADE.md#run-apply-after-upgrade)
   - [Kubernetes applications](./howto/UPGRADE.md#kubernetes-applications)
   - [Kafka upgrade](./howto/UPGRADE.md#how-to-upgrade-kafka)
+  - [Migration from Open Distro for Elasticsearch to OpenSearch](./howto/UPGRADE.md#migration-from-open-distro-for-elasticsearch--kibana-to-opensearch-and-opensearch-dashboards)
   - [Open Distro for Elasticsearch upgrade](./howto/UPGRADE.md#open-distro-for-elasticsearch-upgrade)
   - [Node exporter upgrade](./howto/UPGRADE.md#node-exporter-upgrade)
   - [RabbitMQ upgrade](./howto/UPGRADE.md#rabbitmq-upgrade)
@@ -67,6 +71,7 @@
   - [Terraform upgrade from Epiphany 1.x to 2.x](./howto/UPGRADE.md#terraform-upgrade-from-epiphany-1.x-to-2.x)
 
 - [Security](./howto/SECURITY.md)
+  - [How to run epicli with temporary AWS credentials](./howto/SECURITY.md#how-to-run-epicli-with-temporary-aws-credentials)
   - [How to add/remove additional users to/from OS](./howto/SECURITY.md#how-to-addremove-additional-users-tofrom-os)
   - [How to enable/disable Epiphany service user](./howto/SECURITY.md#how-to-enabledisable-epiphany-service-user)
   - [How to use TLS/SSL certificate with HA Proxy](./howto/SECURITY.md#how-to-use-tlsssl-certificate-with-ha-proxy)
@@ -113,6 +118,7 @@
   - [Centralized logging setup](./howto/LOGGING.md#centralized-logging-setup)
   - [How to add multiline support for Filebeat logs](./howto/LOGGING.md#how-to-add-multiline-support-for-filebeat-logs)
   - [How to deploy Filebeat as Daemonset in K8s](./howto/LOGGING.md#how-to-deploy-filebeat-as-daemonset-in-k8s)
+  - [Audit logs](./howto/LOGGING.md#audit-logs)
 
 - [Maintenance](./howto/MAINTENANCE.md)
   - [Verification of service state](./howto/MAINTENANCE.md#verification-of-service-state)
@@ -126,7 +132,7 @@
   - [AWS Security groups](./howto/SECURITY_GROUPS.md#aws-security-groups)
   - [AWS Security groups full yaml file](./howto/SECURITY_GROUPS.md#aws-setting-groups-full-yaml-file)
 
-- [Modules](./howto/MODULES.md)
+- [K8S-Modules](./howto/K8S_MODULES.md)
 
 - [Repository](./howto/REPOSITORY.md)
   - [Introduction](./howto/REPOSITORY.md#introduction)
@@ -138,3 +144,8 @@
 
 - [Configuration file](./howto/CONFIGURATION_FILE.md)
   - [Named lists](./howto/CONFIGURATION_FILE.md#named-lists)
+
+- [Hostnames](./howto/HOSTNAMES.md)
+  - [Limitations](./howto/HOSTNAMES.md#limitations)
+  - [Generation rule](./howto/HOSTNAMES.md#generation-rule)
+  - [Changing component name](./howto/HOSTNAMES.md#changing-component-name)

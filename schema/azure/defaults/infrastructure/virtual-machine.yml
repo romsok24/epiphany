@@ -1,3 +1,4 @@
+---
 kind: infrastructure/virtual-machine
 title: "Virtual Machine Infra"
 provider: azure
@@ -11,7 +12,7 @@ specification:
   network_interface_name: SET_BY_AUTOMATION
   availability_set_name: SET_BY_AUTOMATION  # Please don't change this default value, keep it "SET_BY_AUTOMATION"
   use_network_security_groups: SET_BY_AUTOMATION
-  security_group_association_name: SET_BY_AUTOMATION  
+  security_group_association_name: SET_BY_AUTOMATION
   tags: []
   os_type: linux
   size: Standard_DS1_v2
@@ -20,14 +21,16 @@ specification:
     publisher: Canonical
     offer: 0001-com-ubuntu-server-focal
     sku: 20_04-lts-gen2
-    version: "20.04.202201100" # Never put latest on anything! Need to always pin the version number but testing we can get away with it
+    version: "20.04.202210100" # Never put latest on anything! Need to always pin the version number but testing we can get away with it
   storage_os_disk:
-    delete_on_termination: false
     managed: true
     caching: ReadWrite
     create_option: FromImage
     disk_size_gb: 32
     managed_disk_type: Premium_LRS
+  additional_disks: []
+    # - storage_account_type: Premium_LRS
+    #   disk_size_gb: 32
   network_interface:
     enable_accelerated_networking: false
     private_ip:
@@ -127,16 +130,6 @@ specification:
         destination_port_range: "5000"
         source_address_prefix: "10.1.0.0/20"
         destination_address_prefix: "0.0.0.0/0"
-  #    - name: node2-subnet-traffic
-  #      description: Allow node subnet traffic
-  #      priority: 102
-  #      direction: Inbound
-  #      access: Allow
-  #      protocol: "*"
-  #      source_port_range: "*"
-  #      destination_port_range: "0"
-  #      source_address_prefix: "10.1.4.0/24"
-  #      destination_address_prefix: "0.0.0.0/0"
 ---
 kind: infrastructure/virtual-machine
 title: "Virtual Machine Infra"
@@ -367,16 +360,6 @@ specification:
         destination_port_range: "0"
         source_address_prefix: "10.1.1.0/24"
         destination_address_prefix: "0.0.0.0/0"
-      #- name: kubernetes-traffic2
-      #  description: Allow Kubernetes subnet traffic
-      #  priority: 102
-      #  direction: Inbound
-      #  access: Allow
-      #  protocol: "*"
-      #  source_port_range: "*"
-      #  destination_port_range: "0"
-      #  source_address_prefix: "10.1.2.0/24"
-      #  destination_address_prefix: "0.0.0.0/0"
 ---
 kind: infrastructure/virtual-machine
 title: "Virtual Machine Infra"
@@ -407,8 +390,8 @@ specification:
         destination_port_range: "9300"
         source_address_prefix: "10.1.0.0/20"
         destination_address_prefix: "0.0.0.0/0"
-      - name: Kibana
-        description: Allow Kibana
+      - name: OpenSearchDashboards
+        description: Allow OpenSearch Dashboards
         priority: 203
         direction: Inbound
         access: Allow
@@ -477,16 +460,6 @@ specification:
         destination_port_range: "5000"
         source_address_prefix: "10.1.0.0/20"
         destination_address_prefix: "0.0.0.0/0"
-  #    - name: node2-subnet-traffic
-  #      description: Allow node subnet traffic
-  #      priority: 102
-  #      direction: Inbound
-  #      access: Allow
-  #      protocol: "*"
-  #      source_port_range: "*"
-  #      destination_port_range: "0"
-  #      source_address_prefix: "10.1.4.0/24"
-  #      destination_address_prefix: "0.0.0.0/0"
 ---
 kind: infrastructure/virtual-machine
 title: "Virtual Machine Infra"

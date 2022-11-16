@@ -11,6 +11,12 @@
   file:
     dest: "/usr/local/bin/helm-{{ newest_archive_version }}/"
     state: directory
+    mode: u=rwx,go=rx
+
+- name: Ensure tar is installed  # required by 'unarchive' module
+  package:
+    name: tar
+    state: present
 
 - name: Unpack Helm binary
   unarchive:
